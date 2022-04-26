@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function randomNo(){
+            return Math.floor(Math.random()*3)+1;
+        }
+        //console.log(randomNo());
+
+        function computerPlay(){
+            if (randomNo() === 1){
+                return "rock";
+
+            }else if(randomNo()===2){
+                return "paper";
+
+            }else {
+                return "scissors"
+
+            }
+        }
+        //console.log(computerPlay());
+
+        function playRound(playerSelection, computerSelection){
+            
+            //compare selections
+            if(playerSelection == computerSelection){
+                return result = `You draw! You both picked ${playerSelection}`;//output outcome of game
+
+            }else if(playerSelection == "rock" && computerSelection == "scissors" ||
+            playerSelection == "paper" && computerSelection == "rock"||
+            playerSelection == "scissors" && computerSelection == "paper"){
+                return result = `You win! ${playerSelection} beats ${computerSelection}`;
+            }else{
+                return result = `You lose! ${computerSelection} beats ${playerSelection}`;
+            };
+        }
+
+        
+
+        function game(){
+            let playerScore = 0;
+            let computerScore = 0;
+    
+            for(i = 0; i < 5; i++){
+                alert(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+                playerSelection = prompt("Please enter your choice", "").toLowerCase();
+                computerSelection = computerPlay();
+                playRound();
+                alert(playRound(playerSelection, computerSelection));
+                console.log(`Player Score: ${playerScore}`);
+                console.log(`Computer Score: ${computerScore}`);
+                console.log(playRound(playerSelection, computerSelection));
+                if(result === `You win! ${playerSelection} beats ${computerSelection}`){
+                    playerScore++;
+
+                }else if(result === `You lose! ${computerSelection} beats ${playerSelection}`){
+                    computerScore++;
+                }
+            }
+            if(playerScore > computerScore){
+                alert("You win the game!");
+                console.log("..........");
+                console.log("Game Over!");
+                console.log("..........");
+                console.log("You win!");
+            } else if (playerScore < computerScore){
+                alert("You lose the game! ");
+                console.log("..........");
+                console.log("Game Over!");
+                console.log("..........");
+                console.log("You lose!");
+            } else {
+                alert("The game is a draw!");
+                console.log("..........");
+                console.log("Game Over!")
+                console.log("..........");
+                console.log("Draw!");
+            }
+            
+        }
+
+        game();
+
+
+    </script>
+</body>
+</html>
