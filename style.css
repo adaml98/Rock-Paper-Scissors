@@ -1,7 +1,7 @@
 #buttons{
     display: flex; 
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
     height: 20vh;
 }
 
@@ -13,6 +13,8 @@
     flex-direction: column;
 }
 
-#score{
-  
+#rock, #paper, #scissors{
+    font-size: large;
+    display: flex;
 }
+

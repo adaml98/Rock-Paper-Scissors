@@ -40,6 +40,7 @@ function game() {
     let i =1;
     const results = document.querySelector("#results"); // reference results div that already exists
     const score = document.querySelector("#score");
+    const body = document.querySelector("body");
     //button listeners
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
@@ -55,7 +56,6 @@ function game() {
                 playerScore++;
                 computerScore++;
             }
-        
             const presult = document.createElement("p");
             results.appendChild(presult);
             presult.textContent = `Round ${i}: ${playRound(playerSelection, computerSelection)}`
@@ -64,25 +64,30 @@ function game() {
             pscore.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`;
 
             i++;
-        });
-    });
 
-    //}// 5 rounds exit bracket
-    /*
-                if(playerScore === 5){
-                    alert("You win the game!");
-                    console.log("..........");
-                    console.log("Game Over!");
-                    console.log("..........");
-                    console.log("You win!");
-                } else if (computerScore === 5){
-                    alert("You lose the game! ");
-                    console.log("..........");
-                    console.log("Game Over!");
-                    console.log("..........");
-                    console.log("You lose!");
-               
-    */
+            if (playerScore >= 5) {
+                body.style.backgroundColor = "green";
+                body.style.color = "white";
+                body.replaceChildren();
+                const endgame = document.createElement("h1");
+                body.appendChild(endgame);
+                endgame.textContent = `YOU WIN!`;
+                endgame.style.textAlign = "center";
+                endgame.style.fontSize = "170px";
+
+            } else if (computerScore >= 5) {
+                body.style.backgroundColor = "red";
+                body.style.color = "white";
+                body.replaceChildren();
+                const endgame = document.createElement("h1");
+                body.appendChild(endgame);
+                endgame.textContent = `YOU LOSE!`;
+                endgame.style.textAlign = "center";
+                endgame.style.fontSize = "170px";
+            }
+        });
+    });      
+    
 }
 
 //RUN GAME
