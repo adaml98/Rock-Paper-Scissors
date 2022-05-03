@@ -39,16 +39,16 @@ function game() {
     let computerScore = 0;
     let i =1;
     const results = document.querySelector("#results"); // reference results div that already exists
+    const score = document.querySelector("#score");
     //button listeners
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             playerSelection = button.id;
             computerSelection = computerPlay();
-            playRound();
+            playRound(playerSelection, computerSelection);
             if (result === `You win! ${playerSelection} beats ${computerSelection}`) {
                 playerScore+=2;
-
             } else if (result === `You lose! ${computerSelection} beats ${playerSelection}`) {
                 computerScore+=2;
             } else {
@@ -57,10 +57,12 @@ function game() {
             }
         
             const presult = document.createElement("p");
-            
             results.appendChild(presult);
             presult.textContent = `Round ${i}: ${playRound(playerSelection, computerSelection)}`
-             //`Player Score: ${playerScore} Computer Score: ${computerScore}`;
+            const pscore = document.createElement("p");
+            score.appendChild(pscore);
+            pscore.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`;
+
             i++;
         });
     });
