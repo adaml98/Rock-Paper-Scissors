@@ -11,10 +11,11 @@ html{
 
 #results{
     display: flex;
-    height: 20vh;
+    height: 50vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: xx-large;
 }
 
 #rock, #paper, #scissors{
